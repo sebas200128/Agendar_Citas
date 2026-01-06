@@ -40,7 +40,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnFrmRegistrar = new javax.swing.JButton();
         btnFrmCitas = new javax.swing.JButton();
         btnFrmEditarRegistro = new javax.swing.JButton();
-        btnFrmEditarCita = new javax.swing.JButton();
         Escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,23 +51,19 @@ public class frmPrincipal extends javax.swing.JFrame {
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(this::btnSalirActionPerformed);
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 170, 90));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 170, 90));
 
         btnFrmRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrar-user.png"))); // NOI18N
         btnFrmRegistrar.setText("Registrar Paciente");
-        jPanel1.add(btnFrmRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 170, 80));
+        jPanel1.add(btnFrmRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 170, 80));
 
         btnFrmCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cita.png"))); // NOI18N
         btnFrmCitas.setText("Registrar Cita");
-        jPanel1.add(btnFrmCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, 80));
+        jPanel1.add(btnFrmCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 80));
 
         btnFrmEditarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
-        btnFrmEditarRegistro.setText("Editar Registro");
-        jPanel1.add(btnFrmEditarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 90));
-
-        btnFrmEditarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editarr.png"))); // NOI18N
-        btnFrmEditarCita.setText("Editar Cita");
-        jPanel1.add(btnFrmEditarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 80));
+        btnFrmEditarRegistro.setText("Editar Paciente");
+        jPanel1.add(btnFrmEditarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 170, 90));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 510));
 
@@ -78,14 +73,14 @@ public class frmPrincipal extends javax.swing.JFrame {
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 850, Short.MAX_VALUE)
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 510, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 520, 510));
+        getContentPane().add(Escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 850, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,7 +97,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane Escritorio;
     public javax.swing.JButton btnFrmCitas;
-    public javax.swing.JButton btnFrmEditarCita;
     public javax.swing.JButton btnFrmEditarRegistro;
     public javax.swing.JButton btnFrmRegistrar;
     public javax.swing.JButton btnSalir;

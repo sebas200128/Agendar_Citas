@@ -35,8 +35,12 @@ public class frmCitas extends javax.swing.JInternalFrame {
         cbxPaciente = new javax.swing.JComboBox<>();
         txtHora = new javax.swing.JTextField();
         txtFechaCita = new javax.swing.JTextField();
-        btnMostrarCitas = new javax.swing.JButton();
         btnGuardarCita = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnEditarCita = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCitas = new javax.swing.JTable();
+        btnOrdenar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -53,39 +57,57 @@ public class frmCitas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblDatos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 450, 120));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 430, 170));
 
         btnMostar.setText("Mostrar Pacientes");
-        getContentPane().add(btnMostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 142, 40));
+        getContentPane().add(btnMostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 150, 40));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registrar cita", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbxPaciente.setBorder(javax.swing.BorderFactory.createTitledBorder("cbxPaciente"));
-        jPanel1.add(cbxPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 129, 50));
+        jPanel1.add(cbxPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 129, 50));
 
         txtHora.setBorder(javax.swing.BorderFactory.createTitledBorder("Digitar hora"));
-        jPanel1.add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 180, 50));
+        jPanel1.add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 180, 50));
 
         txtFechaCita.setBorder(javax.swing.BorderFactory.createTitledBorder("Digitar fecha (dd/MM/yyy)"));
-        jPanel1.add(txtFechaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 180, 50));
+        jPanel1.add(txtFechaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 180, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 450, 160));
-
-        btnMostrarCitas.setText("Mostrar citas");
-        btnMostrarCitas.addActionListener(this::btnMostrarCitasActionPerformed);
-        getContentPane().add(btnMostrarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 160, 40));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 430, 150));
 
         btnGuardarCita.setText("Guardar");
         btnGuardarCita.addActionListener(this::btnGuardarCitaActionPerformed);
-        getContentPane().add(btnGuardarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 160, 40));
+        getContentPane().add(btnGuardarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 110, 40));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Editar Datos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnEditarCita.setText("Editar");
+        jPanel2.add(btnEditarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 110, 40));
+
+        tblCitas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblCitas);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 340, 320));
+
+        btnOrdenar.setText("Ordenar Por");
+        jPanel2.add(btnOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 110, 40));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 360, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnMostrarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarCitasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMostrarCitasActionPerformed
 
     private void btnGuardarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCitaActionPerformed
         // TODO add your handling code here:
@@ -93,12 +115,16 @@ public class frmCitas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnEditarCita;
     public javax.swing.JButton btnGuardarCita;
     public javax.swing.JButton btnMostar;
-    public javax.swing.JButton btnMostrarCitas;
+    public javax.swing.JButton btnOrdenar;
     public javax.swing.JComboBox<modelo.Paciente> cbxPaciente;
     public javax.swing.JPanel jPanel1;
+    public javax.swing.JPanel jPanel2;
     public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JTable tblCitas;
     public javax.swing.JTable tblDatos;
     public javax.swing.JTextField txtFechaCita;
     public javax.swing.JTextField txtHora;

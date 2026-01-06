@@ -38,4 +38,31 @@ public class SentenciasSQL {
     // ELIMINAR (Ya que tienes el botón, te lo dejo listo)
     public static final String ELIMINAR_PACIENTE = "DELETE FROM paciente WHERE id = ?";
 
+    // LISTAR CITAS EN TABLA (Para poder seleccionarlas con clic)
+    public static final String LISTAR_CITAS_TABLA
+            = "SELECT c.id, p.nombre, c.fecha, c.hora, p.id as id_paciente "
+            + "FROM citas c "
+            + "INNER JOIN paciente p ON c.id_paciente = p.id "
+            + "ORDER BY c.fecha ASC, c.hora ASC";
+
+    // ACTUALIZAR CITA
+    public static final String ACTUALIZAR_CITA
+            = "UPDATE citas SET id_paciente = ?, fecha = ?, hora = ? WHERE id = ?";
+
+    // BASE DE LA CONSULTA (Sin el Order By)
+    private static final String BASE_SELECT_CITAS
+            = "SELECT c.id, p.nombre, c.fecha, c.hora, p.id as id_paciente "
+            + "FROM citas c "
+            + "INNER JOIN paciente p ON c.id_paciente = p.id ";
+
+    // 1. ORDENAR POR FECHA (Lo normal, incluye hora)
+    public static final String ORDER_FECHA = BASE_SELECT_CITAS + "ORDER BY c.fecha ASC, c.hora ASC";
+
+    // 2. ORDENAR POR NOMBRE (Alfabético)
+    public static final String ORDER_NOMBRE = BASE_SELECT_CITAS + "ORDER BY p.nombre ASC, c.fecha ASC";
+
+    // 3. ORDENAR POR MES (Agrupa por mes de la fecha)
+    // Usamos la función MONTH() de MySQL
+    public static final String ORDER_MES = BASE_SELECT_CITAS + "ORDER BY MONTH(c.fecha) ASC, c.fecha ASC";
+
 }

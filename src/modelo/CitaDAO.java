@@ -7,6 +7,8 @@ package modelo;
 import config.Conexion;
 import config.SentenciasSQL;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +46,68 @@ public class CitaDAO {
                 }
             } catch (Exception ex) {
             }
+        }
+    }
+
+    // 1. MÉTODO PARA LLENAR LA TABLA DE CITAS
+    public List<Object[]> listarCitasParaTabla(String tipoOrden) {
+        List<Object[]> lista = new ArrayList<>();
+        String sql = "";
+
+        // Elegimos la consulta según lo que pida el controlador
+        switch (tipoOrden) {
+            case "Por Nombres":
+                sql = SentenciasSQL.ORDER_NOMBRE;
+                break;
+            case "Por Meses":
+                sql = SentenciasSQL.ORDER_MES;
+                break;
+            default: // "Por Fechas" o cualquier otro caso
+                sql = SentenciasSQL.ORDER_FECHA;
+                break;
+        }
+
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Object[] fila = new Object[5];
+                fila[0] = rs.getInt("id");
+                fila[1] = rs.getString("nombre");
+                fila[2] = rs.getDate("fecha");
+                fila[3] = rs.getString("hora");
+                fila[4] = rs.getInt("id_paciente");
+                lista.add(fila);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error listar citas ordenadas: " + e);
+        } finally {
+            cerrarConexiones();
+        }
+        return lista;
+    }
+
+    // 2. MÉTODO PARA EDITAR
+    public boolean editar(Cita c) {
+        String sql = SentenciasSQL.ACTUALIZAR_CITA;
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(1, c.getIdPaciente()); // Nuevo Paciente (si se cambió)
+            ps.setDate(2, new java.sql.Date(c.getFechaCita().getTime())); // Nueva Fecha
+            ps.setString(3, c.getHora());    // Nueva Hora
+            ps.setInt(4, c.getId());         // ID de la Cita a editar (WHERE)
+
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al editar cita: " + e);
+            return false;
+        } finally {
+            cerrarConexiones();
         }
     }
 
@@ -143,6 +207,22 @@ public class CitaDAO {
         }
 
         return texto.toString();
+    }
+
+    private void cerrarConexiones() {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            System.err.println("Error cerrando conexiones: " + e.toString());
+        }
     }
 
 }
